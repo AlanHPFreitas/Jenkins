@@ -58,13 +58,7 @@ pipeline {
                     # node_modules/.bin/netlify status
                     # node_modules/.bin/netlify deploy --prod --dir=build
 
-                    #### Custom docker image
-
-                    netlify --version
-                    echo "Deploring to Site ID: $NETLIFY_SITE_ID"
-                    netlify status
-                    netlify deploy --prod --dir=build
-                '''
+                   
             }
         }
     }
