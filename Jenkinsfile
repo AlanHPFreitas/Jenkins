@@ -1,16 +1,12 @@
 pipeline {
     agent any
-    // environment {
-    //      NETLIFY_SITE_ID = "8bbf390f-9777-48da-ba5d-640735d410e3"
-    //      NETLIFY_AUTH_TOKEN = credentials('myToken')
-    //  }
+    environment {
+         NETLIFY_SITE_ID = "8bbf390f-9777-48da-ba5d-640735d410e3"
+         NETLIFY_AUTH_TOKEN = credentials('myToken')
+     }
     
     stages {
-        // stage('Docker'){
-        //     steps{
-        //         sh 'docker build -t my-docker-image .'
-        //     }
-        // }
+        
         stage('Build') {
             agent {
                 docker { 
@@ -43,28 +39,22 @@ pipeline {
                 '''
             }
         }
-        // stage('Deploy') {
-        //     agent {
-        //         docker { 
-        //             image 'node:22.14.0-alpine' 
-        //             reuseNode true
-        //         }
-        //     }
-        //     steps {
-        //         sh '''
-        //             # npm install netlify-cli
-        //             # node_modules/.bin/netlify --version
-        //             # echo "Deploring to Site ID: $NETLIFY_SITE_ID"
-        //             # node_modules/.bin/netlify status
-        //             # node_modules/.bin/netlify deploy --prod --dir=build
-
-                    
-
-                    
-                    
-                    
-        //         '''
-        //     }
+        stage('Deploy') {
+            agent {
+                docker { 
+                    image 'node:22.14.0-alpine' 
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    # npm install netlify-cli
+                    # node_modules/.bin/netlify --version
+                    # echo "Deploring to Site ID: $NETLIFY_SITE_ID"
+                    # node_modules/.bin/netlify status
+                    # node_modules/.bin/netlify deploy --prod --dir=build 
+                '''
+            }
         //}
     }
 }
