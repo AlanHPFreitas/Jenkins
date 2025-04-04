@@ -10,7 +10,7 @@ function App() {
           This is my Jenkins App 
         </p>
         <h1>
-          Alan Freitas - Enterprise Computing
+          Alan Freitas  -  Enterprise Computing
         </h1>
         
       </header>
